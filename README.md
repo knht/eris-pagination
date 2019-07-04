@@ -11,7 +11,7 @@ There's only a single method needed for creating paginated Embeds with Eris:
 ```js
 EmbedPaginator.createPaginationEmbed(message, embeds, options);
 ```
-- **Eris.Message** `message` - An Eris message emitted frm the `messageCreate` event.
+- **Eris.Message** `message` - An Eris message emitted from the `messageCreate` event.
 - **Object[]** `embeds` - An array containing all Embed objects you want to use with the paginator.
 - **Object** `options` - An object containing optional settings to overwrite the default behavior of Eris Paginator.
     - **Boolean** `options.showPageNumbers` - Whether to show *"Page **n** of **m**"* over the Embed.
