@@ -1,0 +1,30 @@
+{
+  "name": "eris-pagination",
+  "version": "0.1.0",
+  "description": "An extremely easy to use Embed Paginator for the Eris Discord Library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riyacchi/eris-pagination.git"
+  },
+  "keywords": [
+    "eris",
+    "pagination",
+    "embed",
+    "paginator",
+    "embed-pagination",
+    "discord"
+  ],
+  "author": "Riya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/riyacchi/eris-pagination/issues"
+  },
+  "homepage": "https://github.com/riyacchi/eris-pagination#readme",
+  "dependencies": {
+    "eris-reactions": "^0.1.0"
+  }
+}
