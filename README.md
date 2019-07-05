@@ -17,6 +17,9 @@ EmbedPaginator.createPaginationEmbed(message, embeds, options);
     - **Boolean** `options.showPageNumbers` - Whether to show *"Page **n** of **m**"* over the Embed.
         - Optional: **Yes**
         - Default: **True**
+    - **Boolean** `options.extendedButtons` - Whether to show advanced pagination buttons (Jump to First & Last page)
+        - Optional: **Yes**
+        - Default: **False**
     - **Number** `options.startPage` - Which page (element) of the provided array to show first initially.
         - Optional: **Yes**
         - Default: **1**
@@ -28,12 +31,23 @@ EmbedPaginator.createPaginationEmbed(message, embeds, options);
         - Optional: **Yes**
         - Default: **300000** *(5 minutes)*
         - Maximum: **900000** *(15 minutes)*
+    - **String** `options.firstButton` - Emoji used as the first page button. **Must be Unicode!**
+        - Optional: **Yes**
+        - Default: **⏮**
     - **String** `options.backButton` - Emoji used as the back button. **Must be Unicode!**
         - Optional: **Yes**
         - Default: **⬅**
     - **String** `options.forthButton` - Emoji used as the forth button. **Must be Unicode!**
         - Optional: **Yes**
         - Default: **➡**
+    - **String** `options.lastButton` - Emoji used as the last page button. **Must be Unicode!**
+        - Optional: **Yes**
+        - Default: **⏭**
+    - **String** `options.deleteButton` - Emoji used as the delete button. **Must be Unicode!**
+        - Optional: **Yes**
+        - Default: **🗑**
+
+**Notice:** The Delete button does *not* delete the whole embed. It removes every reaction and resolves with an empty Promise!
 
 # Examples
 **Simple paginator without additional options:**
@@ -91,10 +105,12 @@ bot.on('messageCreate', async (message) => {
             myEmbeds, 
             {
                 showPageNumbers: false,
+                extendedButtons: true,
                 maxMatches: 10,
                 timeout: 150000,
                 backButton: '◀',
                 forthButton: '▶',
+                deleteButton: '💩',
                 startPage: 2
             }
         );
@@ -103,10 +119,9 @@ bot.on('messageCreate', async (message) => {
 
 bot.connect();
 ```
-
 <div align="center">
 
-![](https://img.kirameki.one/BQMNzlqJ.gif)
+![](https://img.kirameki.one/lOJVBJ5q.png)
 
 </div>
 
