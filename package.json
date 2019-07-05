@@ -1,6 +1,6 @@
 {
   "name": "eris-pagination",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "An extremely easy to use Embed Paginator for the Eris Discord Library",
   "main": "index.js",
   "scripts": {
