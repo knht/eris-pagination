@@ -1,3 +1,3 @@
 'use strict';
 
-module.exports = require('./lib/PaginationEmbed');
+module.exports = require('./lib/Pagination');
