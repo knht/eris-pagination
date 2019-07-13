@@ -1,5 +1,5 @@
 # Eris Pagination
-Eris Pagination is a super simple to use **Embed Paginator** for the Node.js Discord library  [Eris.](https://github.com/abalabahaha/eris)
+Eris Pagination is a super simple to use **Paginator** for the Node.js Discord library  [Eris.](https://github.com/abalabahaha/eris)
 
 The API is *very* straight forward but also offers a big amount of customizability as well!
 
@@ -7,9 +7,10 @@ The API is *very* straight forward but also offers a big amount of customizabili
 Simply install Eris Pagination via NPM by typing `npm install eris-pagination` into your existing project and require the module wherever you need. That's it!
 
 # API
-There's only a single method needed for creating paginated Embeds with Eris:
+There are three methods that you can use to create paginated content.
+Here's an example on how to paginate Embeds:
 ```js
-EmbedPaginator.createPaginationEmbed(message, embeds, options);
+PaginationHandler.createPaginationEmbed(message, embeds, options);
 ```
 - **Eris.Message** `message` - An Eris message emitted from the `messageCreate` event.
 - **Object[]** `embeds` - An array containing all Embed objects you want to use with the paginator.
@@ -53,7 +54,7 @@ EmbedPaginator.createPaginationEmbed(message, embeds, options);
 **Simple paginator without additional options:**
 ```js
 const Eris = require('eris');
-const EmbedPaginator = require('eris-pagination');
+const PaginationHandler = require('eris-pagination');
 const bot = new Eris('BOT_TOKEN');
 
 bot.on('ready', () => {
@@ -68,7 +69,7 @@ bot.on('messageCreate', async (message) => {
             { title: 'Test Embed 3', color: 0xE74C3C }
         ];
 
-        EmbedPaginator.createPaginationEmbed(message, myEmbeds);
+        PaginationHandler.createPaginationEmbed(message, myEmbeds);
     }
 });
 
@@ -85,7 +86,7 @@ bot.connect();
 **Advanced paginator with overwriting options:**
 ```js
 const Eris = require('eris');
-const EmbedPaginator = require('eris-pagination');
+const PaginationHandler = require('eris-pagination');
 const bot = new Eris('BOT_TOKEN');
 
 bot.on('ready', () => {
@@ -100,7 +101,7 @@ bot.on('messageCreate', async (message) => {
             { title: 'Test Embed 3', color: 0xE74C3C }
         ];
 
-        EmbedPaginator.createPaginationEmbed(
+        PaginationHandler.createPaginationEmbed(
             message, 
             myEmbeds, 
             {
