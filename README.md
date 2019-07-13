@@ -1,5 +1,7 @@
+<header style="background: red">
 # Eris Pagination
 Eris Pagination is a super simple to use **Paginator** for the Node.js Discord library  [Eris.](https://github.com/abalabahaha/eris)
+</header>
 
 The API is *very* straight forward but also offers a big amount of customizability as well!
 
