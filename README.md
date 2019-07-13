@@ -8,6 +8,7 @@ Simply install Eris Pagination via NPM by typing `npm install eris-pagination` i
 
 # API
 There are three methods that you can use to create paginated content.
+
 Here's an example on how to paginate Embeds:
 ```js
 PaginationHandler.createPaginationEmbed(message, embeds, options);
