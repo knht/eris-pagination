@@ -26,5 +26,8 @@
   "homepage": "https://github.com/riyacchi/eris-pagination#readme",
   "dependencies": {
     "eris-reactions": "^0.1.2"
+  },
+  "devDependencies": {
+    "eris": "^0.10.1"
   }
 }
