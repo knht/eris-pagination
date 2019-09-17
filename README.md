@@ -7,10 +7,13 @@ The API is *very* straight forward but also offers a big amount of customizabili
 Simply install Eris Pagination via NPM by typing `npm install eris-pagination` into your existing project and require the module wherever you need. That's it!
 
 # API
-There's only a single method needed for creating paginated Embeds with Eris:
+There's only a single **asynchronous** method needed for creating paginated Embeds with Eris:
 ```js
 EmbedPaginator.createPaginationEmbed(message, embeds, options);
 ```
+**Returns:** `Promise<Eris.Message>` - The `createPaginationEmbed` method will return a [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) which resolves with an [Eris.Message](https://abal.moe/Eris/docs/Message) object of the paginated Embed. (E.g. to manually tinker with the paginator message).
+
+**Parameters:**
 - **Eris.Message** `message` - An Eris message emitted from the `messageCreate` event.
 - **Object[]** `embeds` - An array containing all Embed objects you want to use with the paginator.
 - **Object** `options` - An object containing optional settings to overwrite the default behavior of Eris Paginator.
@@ -68,7 +71,8 @@ bot.on('messageCreate', async (message) => {
             { title: 'Test Embed 3', color: 0xE74C3C }
         ];
 
-        EmbedPaginator.createPaginationEmbed(message, myEmbeds);
+        const paginatedEmbed = await EmbedPaginator.createPaginationEmbed(message, myEmbeds);
+        /* paginatedEmbed ⇨ Eris.Message */
     }
 });
 
@@ -100,7 +104,7 @@ bot.on('messageCreate', async (message) => {
             { title: 'Test Embed 3', color: 0xE74C3C }
         ];
 
-        EmbedPaginator.createPaginationEmbed(
+        const paginatedEmbed = await EmbedPaginator.createPaginationEmbed(
             message, 
             myEmbeds, 
             {
@@ -114,6 +118,7 @@ bot.on('messageCreate', async (message) => {
                 startPage: 2
             }
         );
+        /* paginatedEmbed ⇨ Eris.Message */
     }
 });
 
