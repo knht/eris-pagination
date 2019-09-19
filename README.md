@@ -23,6 +23,9 @@ EmbedPaginator.createPaginationEmbed(message, embeds, options);
     - **Boolean** `options.extendedButtons` - Whether to show advanced pagination buttons (Jump to First & Last page)
         - Optional: **Yes**
         - Default: **False**
+    - **Boolean** `options.cycling` - Cycle through all embeds jumping from the first page to the last page on going back and from the last page to the first page going forth.
+        - Optional: **Yes**
+        - Default: **False**
     - **Number** `options.startPage` - Which page (element) of the provided array to show first initially.
         - Optional: **Yes**
         - Default: **1**
