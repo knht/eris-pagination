@@ -16,6 +16,6 @@ declare namespace ErisPagination {
     startPage?: number;
   }
 
-  function createPaginationEmbed(message: Message, pages: EmbedBase, options?: PaginationOptions): Promise<Message>;
+  function createPaginationEmbed(message: Message, pages: EmbedBase[], options?: PaginationOptions): Promise<Message>;
 
 }
