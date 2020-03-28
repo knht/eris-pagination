@@ -1,6 +1,6 @@
 import { Message, EmbedBase } from 'eris';
 
-declare module 'ErisPagination' {
+declare module 'eris-pagination' {
 
   interface PaginationOptions {
     showPageNumbers?: boolean;
