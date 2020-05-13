@@ -28,6 +28,6 @@
     "eris-reactions": "^0.1.2"
   },
   "peerDependencies": {
-    "eris": "^0.11.2"
+    "eris": "^0.13.1"
   }
 }
