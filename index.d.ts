@@ -1,4 +1,4 @@
-import { Message, EmbedBase } from 'eris';
+import { Message, EmbedOptions } from 'eris';
 
 declare module 'eris-pagination' {
 
@@ -36,6 +36,6 @@ declare module 'eris-pagination' {
    * @param pages An array containing all embed objects 
    * @param options An optional options object for overwriting defaults
    */
-  function createPaginationEmbed(message: Message, pages: EmbedBase[], options?: PaginationOptions): Promise<Message>;
+  function createPaginationEmbed(message: Message, pages: EmbedOptions[], options?: PaginationOptions): Promise<Message>;
 
 }
