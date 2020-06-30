@@ -1,6 +1,6 @@
 {
-  "name": "eris-pagination",
-  "version": "0.5.1",
+  "name": "eris-pages",
+  "version": "0.1.0",
   "description": "An extremely easy to use Embed Paginator for the Eris Discord Library",
   "main": "lib/index.js",
   "scripts": {
@@ -20,17 +20,13 @@
     "embed-pagination",
     "discord"
   ],
-  "author": "Riya",
-  "contributors": [
-    "whoastonic <kingstonicthe1@gmail.com>"
-  ],
+  "author": "whoastonic <kingstonicthe1@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/whoastonic/eris-pagination/issues"
   },
   "homepage": "https://github.com/whoastonic/eris-pagination#readme",
-  "dependencies": {
-  },
+  "dependencies": {},
   "peerDependencies": {
     "eris": "^0.13.3",
     "eris-reactions": "git+https://git@github.com/whoastonic/eris-reactions.git"
@@ -38,6 +34,7 @@
   "files": [
     "lib/**/*"
   ],
+  "types": "lib/index.d.ts",
   "devDependencies": {
     "@types/node": "^14.0.14",
     "ava": "^3.9.0",
@@ -48,6 +45,16 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "nyc": "^15.1.0",
+    "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "tsconfig-paths/register",
+      "ts-node/register"
+    ]
   }
 }

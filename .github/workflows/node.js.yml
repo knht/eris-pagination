@@ -1,0 +1,33 @@
+name: eris-pages
+
+on:
+  push:
+    branches: master
+  pull_request:
+    branches: master
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: installing packages
+        run: npm i
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: linting eris-pages
+        run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: testing eris-pages
+        run: npm run test
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: building eris-pages
+        run: npm run build

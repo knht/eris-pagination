@@ -1,5 +1,6 @@
 import {
   Embed,
+  Emoji,
   Client,
   Message,
   GuildChannel
@@ -72,12 +73,83 @@ export class PageBuilder {
     }
   }
 
+  private async handleActionButton (emoji: string): Promise<void> {
+    for (let i = 0; i < this.actionButtons.length; i++) {
+      const action = this.actionButtons[i]
+
+      if (action.emote === emoji) {
+        action.run()
+      }
+    }
+  }
+
   public async start (): Promise<void> {
-    this.handler?.on('reacted', async ({ emoji }) => {
+    this.handler?.on('reacted', async ({ emoji }: Emoji) => {
+      if (this.actionButtons.length > 0) {
+        await this.handleActionButton(emoji.name)
+      }
+
       switch (emoji.name) {
         case this.options.firstButton:
+          if (this.checkPerms()) {
+            await this.message?.removeReaction(
+              this.options?.firstButton,
+              this.getInvoker()
+            )
+          }
+
+          if (this.currentPage > 1) {
+            this.currentPage = 1
+            await this.updateMessage()
+          }
           break
-        default:
+        case this.options?.backButton:
+          if (this.checkPerms()) {
+            await this.message?.removeReaction(
+              this.options?.backButton,
+              this.getInvoker()
+            )
+          }
+
+          if (this.currentPage > 1) {
+            this.currentPage -= 1
+            await this.updateMessage()
+          } else if (this.currentPage === 1 && this.options?.cycling === true) {
+            this.currentPage = this.pages.length
+            await this.updateMessage()
+          }
+          break
+        case this.options?.forthButton:
+          if (this.checkPerms()) {
+            await this.message?.removeReaction(
+              this.options?.forthButton,
+              this.getInvoker()
+            )
+          }
+
+          if (this.currentPage < this.pages.length) {
+            this.currentPage += 1
+            await this.updateMessage()
+          } else if (this.currentPage === this.pages.length && this.options?.cycling) {
+            this.currentPage = 1
+            await this.updateMessage()
+          }
+          break
+        case this.options?.lastButton:
+         if (this.checkPerms()) {
+            await this.message?.removeReaction(
+              this.options?.firstButton,
+              this.getInvoker()
+            )
+          }
+
+          if (this.currentPage < this.pages.length) {
+            this.currentPage = this.pages.length
+            await this.updateMessage()
+          }
+          break
+        case this.options?.deleteButton:
+          await this.message?.delete()
           break
       }
     })

@@ -1,18 +1,13 @@
 export class ActionButton {
   emote: string
-  runAction: Action
+  run: (...args: any) => void
 
   constructor (
     actionEmote: string,
-    action: Action
+    action: (...args: any) => void
   ) {
     this.emote = actionEmote
-    this.runAction = action
+    this.run = action
   }
 }
 
-export type Action = (...args: any) => void
-
-export interface ActionOptions {
-  buttonEmote: string
-}
