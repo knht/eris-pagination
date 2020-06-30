@@ -2,7 +2,7 @@
   "name": "eris-pagination",
   "version": "0.5.1",
   "description": "An extremely easy to use Embed Paginator for the Eris Discord Library",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
     "test": "nyc --reporter lcov ava",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/riyacchi/eris-pagination.git"
+    "url": "git+https://github.com/whoastonic/eris-pagination.git"
   },
   "keywords": [
     "eris",
@@ -26,14 +26,18 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/riyacchi/eris-pagination/issues"
+    "url": "https://github.com/whoastonic/eris-pagination/issues"
   },
-  "homepage": "https://github.com/riyacchi/eris-pagination#readme",
+  "homepage": "https://github.com/whoastonic/eris-pagination#readme",
   "dependencies": {
+  },
+  "peerDependencies": {
     "eris": "^0.13.3",
     "eris-reactions": "git+https://git@github.com/whoastonic/eris-reactions.git"
   },
-  "peerDependencies": {},
+  "files": [
+    "lib/**/*"
+  ],
   "devDependencies": {
     "@types/node": "^14.0.14",
     "ava": "^3.9.0",
