@@ -2,11 +2,11 @@
 export class ActionButton {
 
   public readonly actionEmote: string
-  public readonly action: () => Promise<void>
+  public readonly action: () => void | Promise<void>
 
   constructor (
     actionEmote: string,
-    action: () => Promise<void>,
+    action: () => void | Promise<void>,
   ) {
     this.actionEmote = actionEmote
     this.action = action

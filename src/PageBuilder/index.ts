@@ -8,6 +8,7 @@ import {
 import {
   ReactionParams,
   ReactionHandler,
+  continuousReactionStream,
 } from 'eris-reactions'
 
 import {
@@ -220,8 +221,17 @@ export class PageBuilder {
     }
 
     this.handler = new ReactionHandler(
-      this.message, (userID: string) => userID === this.getInvoker(),
-      false, { maxMatches: this.options.maxMatches },
+      this.message,
+      (userID: string) =>
+        userID === this.getInvoker(),
+      false,
+      {
+        maxMatches: this.options
+          ? this.options.maxMatches
+            ? this.options.maxMatches
+            : 50
+          : 50,
+      },
     )
 
     await this.message?.addReaction(this.options.backButton)
