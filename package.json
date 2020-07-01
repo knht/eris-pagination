@@ -28,7 +28,7 @@
   "homepage": "https://github.com/whoastonic/eris-pagination#readme",
   "dependencies": {
     "eris": "^0.13.3",
-    "eris-reactions": "git+https://git@github.com/whoastonic/eris-reactions.git"
+    "eris-reactions": "https://github.com/whoastonic/eris-reactions.git"
   },
   "files": [
     "lib/**/*"

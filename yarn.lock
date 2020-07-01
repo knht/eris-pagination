@@ -1084,9 +1084,9 @@ equal-length@^1.0.0:
   resolved "https://registry.yarnpkg.com/equal-length/-/equal-length-1.0.1.tgz#21ca112d48ab24b4e1e7ffc0e5339d31fdfc274c"
   integrity sha1-IcoRLUirJLTh5//A5TOdMf38J0w=
 
-"eris-reactions@git+https://git@github.com/whoastonic/eris-reactions.git":
+"eris-reactions@https://github.com/whoastonic/eris-reactions.git":
   version "0.1.3"
-  resolved "git+https://git@github.com/whoastonic/eris-reactions.git#4e388be6aaf76ad4cd80710b4b829a3f7ca0f91f"
+  resolved "https://github.com/whoastonic/eris-reactions.git#ac648fd0bbe80e26fb3e9e039c95a46570c9e4c7"
 
 eris@^0.13.3:
   version "0.13.3"
