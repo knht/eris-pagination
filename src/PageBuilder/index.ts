@@ -139,7 +139,7 @@ export class PageBuilder {
             }
 
             if (this.currentPage > 1) {
-              this.currentPage -= 1
+              this.currentPage--
               this.updateMessage()
                 .catch((error: string) => {
                   throw new Error(`error updating message: ${error}`)
@@ -168,7 +168,7 @@ export class PageBuilder {
             }
 
             if (this.currentPage < this.pages.length) {
-              this.currentPage += 1
+              this.currentPage++
               this.updateMessage()
                 .catch((error: string) => {
                   throw new Error(`cannot update message: ${error}`)
