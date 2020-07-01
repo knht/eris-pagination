@@ -106,7 +106,7 @@ export class PageBuilder {
         }
 
         switch (emoji.name) {
-          case this.options?.firstButton:
+          case this.options?.lastButton:
             if (this.checkPerms()) {
               if (this.message !== undefined) {
                 this.message.removeReaction(
@@ -192,7 +192,7 @@ export class PageBuilder {
                 })
             }
             break
-          case this.options?.lastButton:
+          case this.options?.firstButton:
             if (this.checkPerms()) {
               if (this.message !== undefined) {
                 this.message.removeReaction(
