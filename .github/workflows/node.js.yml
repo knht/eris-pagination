@@ -1,4 +1,4 @@
-name: eris-pages
+name: eris-pages GH Actions
 
 on:
   push:
@@ -7,27 +7,15 @@ on:
     branches: master
 
 jobs:
-  install:
+  eslint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: installing packages
-        run: npm i
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: linting eris-pages
-        run: npm run lint
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: testing eris-pages
-        run: npm run test
+      - name: linting src directory
+        run: npm i && npm run eslint
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: building eris-pages
-        run: npm run build
+      - name: building src dir
+        run: npm i && npm run build
