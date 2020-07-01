@@ -1086,7 +1086,7 @@ equal-length@^1.0.0:
 
 "eris-reactions@https://github.com/whoastonic/eris-reactions.git":
   version "0.1.3"
-  resolved "https://github.com/whoastonic/eris-reactions.git#a9e4a691e061ab62727384043d800065492ba8b0"
+  resolved "https://github.com/whoastonic/eris-reactions.git#ca0d260025e53af9e48fce67f49b64e8b8dcba7a"
 
 eris@^0.13.3:
   version "0.13.3"
