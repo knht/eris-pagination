@@ -1,13 +1,15 @@
+
 export class ActionButton {
-  emote: string
-  run: (...args: any) => void
+
+  public readonly actionEmote: string
+  public readonly action: () => Promise<void>
 
   constructor (
     actionEmote: string,
-    action: (...args: any) => void
+    action: () => Promise<void>,
   ) {
-    this.emote = actionEmote
-    this.run = action
+    this.actionEmote = actionEmote
+    this.action = action
   }
-}
 
+}

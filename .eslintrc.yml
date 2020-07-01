@@ -1,4 +1,3 @@
-extends: 'standard-with-typescript'
+extends: '@alex-taxiera/eslint-config-ts'
 parserOptions:
   project: './tsconfig.json'
-
