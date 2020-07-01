@@ -1,10 +1,11 @@
 {
   "name": "eris-pages",
-  "version": "1.0.4-beta",
+  "version": "1.0.6-beta",
   "description": "An extremely easy to use Embed Paginator for the Eris Discord Library",
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc",
+    "prepublish": "yarn build",
     "test": "nyc --reporter lcov ava",
     "eslint": "eslint src --ext ts"
   },
