@@ -1,12 +1,12 @@
 import {
   Embed,
-  Emoji,
   Client,
   Message,
   GuildChannel
 } from 'eris'
 
 import {
+  ReactionParams,
   ReactionHandler
 } from 'eris-reactions'
 
@@ -84,7 +84,7 @@ export class PageBuilder {
   }
 
   public async start (): Promise<void> {
-    this.handler?.on('reacted', async ({ emoji }: Emoji) => {
+    this.handler?.on('reacted', async ({ emoji }: ReactionParams) => {
       if (this.actionButtons.length > 0) {
         await this.handleActionButton(emoji.name)
       }
@@ -215,10 +215,6 @@ export class PageBuilder {
 
   private getClientId (): string {
     return this.client.user.id
-  }
-
-  private getLastPage (): Embed {
-    return this.pages[this.pages.length - 1]
   }
 }
 
