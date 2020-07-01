@@ -28,7 +28,7 @@ export class PageBuilder {
   constructor (client: Client, message: Message, options?: BuilderOptions) {
     this.pages = []
     this.client = client
-    this.currentPage = 0
+    this.currentPage = 1
     this.invoker = message
     this.actionButtons = []
     this.options = options ?? {
@@ -68,9 +68,9 @@ export class PageBuilder {
   private generateContent (): MessageContent {
     return {
       content: this.options.showPagesNumbers
-        ? `Page ${++this.currentPage} of ${this.pages.length}`
+        ? `Page ${this.currentPage} of ${this.pages.length}`
         : undefined,
-      embed: this.pages[this.currentPage],
+      embed: this.pages[this.currentPage - 1],
     }
   }
 
