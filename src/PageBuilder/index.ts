@@ -236,8 +236,8 @@ export class PageBuilder {
     await this.message?.addReaction(this.options.backButton)
     await this.message?.addReaction(this.options.forthButton)
 
-    if (this.actionButtons.length > 0) {
-      for (let i = 0; i > this.actionButtons.length; i++) {
+    if (this.actionButtons.length !== 0) {
+      for (let i = 0; i < this.actionButtons.length; i++) {
         await this.message?.addReaction(
           this.actionButtons[i].actionEmote
         )
