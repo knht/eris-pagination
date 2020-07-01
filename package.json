@@ -26,8 +26,7 @@
     "url": "https://github.com/whoastonic/eris-pagination/issues"
   },
   "homepage": "https://github.com/whoastonic/eris-pagination#readme",
-  "dependencies": {},
-  "peerDependencies": {
+  "dependencies": {
     "eris": "^0.13.3",
     "eris-reactions": "git+https://git@github.com/whoastonic/eris-reactions.git"
   },
@@ -37,6 +36,7 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "@types/node": "^14.0.14",
+    "@types/sinon": "^9.0.4",
     "ava": "^3.9.0",
     "eslint": "^7.3.1",
     "eslint-config-standard": "^14.1.1",
@@ -45,6 +45,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "nyc": "^15.1.0",
+    "sinon": "^9.0.2",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
   },
