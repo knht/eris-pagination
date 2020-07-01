@@ -8,7 +8,6 @@ import {
 import {
   ReactionParams,
   ReactionHandler,
-  continuousReactionStream,
 } from 'eris-reactions'
 
 import {
