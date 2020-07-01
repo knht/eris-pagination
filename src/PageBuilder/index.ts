@@ -68,9 +68,9 @@ export class PageBuilder {
   private generateContent (): MessageContent {
     return {
       content: this.options.showPagesNumbers
-        ? `Page ${this.currentPage} of ${this.pages.length}`
+        ? `Page ${++this.currentPage} of ${this.pages.length}`
         : undefined,
-      embed: this.pages[this.currentPage - 1],
+      embed: this.pages[this.currentPage],
     }
   }
 
