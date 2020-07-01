@@ -14,6 +14,20 @@ import {
   ActionButton,
 } from '../ActionButton'
 
+const DEFAULT_BUILDER = {
+  backButton: '⬅️',
+  forthButton: '➡️',
+  startPage: 1,
+  timeout: (30 * 1000) * 1000,
+  cycling: false,
+  firstButton: '⏭️',
+  lastButton: '⏮️',
+  maxMatches: 50,
+  deleteButton: '🗑️',
+  showPagesNumbers: true,
+  extendedButtons: false,
+}
+
 export class PageBuilder {
 
   private readonly pages: Embed[]
@@ -31,19 +45,7 @@ export class PageBuilder {
     this.currentPage = 1
     this.invoker = message
     this.actionButtons = []
-    this.options = Object.assign({}, {
-      backButton: '⬅️',
-      forthButton: '➡️',
-      startPage: 1,
-      timeout: (30 * 1000) * 1000,
-      cycling: false,
-      firstButton: '⏭️',
-      lastButton: '⏮️',
-      maxMatches: 50,
-      deleteButton: '🗑️',
-      showPagesNumbers: true,
-      extendedButtons: false,
-    }, options ?? {})
+    this.options = Object.assign({}, DEFAULT_BUILDER, options ?? {})
   }
 
   public addPages (pages: Embed[]): PageBuilder {
@@ -238,8 +240,17 @@ export class PageBuilder {
       },
     )
 
-    await this.message?.addReaction(this.options.backButton)
-    await this.message?.addReaction(this.options.forthButton)
+    await this.message?.addReaction(
+      this.options.backButton
+        ? this.options.backButton
+        : DEFAULT_BUILDER.backButton
+    )
+
+    await this.message?.addReaction(
+      this.options.forthButton
+        ? this.options.forthButton
+        : DEFAULT_BUILDER.forthButton
+    )
 
     if (this.actionButtons.length !== 0) {
       for (let i = 0; i < this.actionButtons.length; i++) {
@@ -250,9 +261,21 @@ export class PageBuilder {
     }
 
     if (this.options.extendedButtons) {
-      await this.message?.addReaction(this.options.lastButton)
-      await this.message?.addReaction(this.options.firstButton)
-      await this.message?.addReaction(this.options.deleteButton)
+      await this.message?.addReaction(
+        this.options.lastButton
+          ? this.options.lastButton
+          : DEFAULT_BUILDER.lastButton
+      )
+      await this.message?.addReaction(
+        this.options.firstButton
+          ? this.options.firstButton
+          : DEFAULT_BUILDER.firstButton
+      )
+      await this.message?.addReaction(
+        this.options.deleteButton
+          ? this.options.deleteButton
+          : DEFAULT_BUILDER.deleteButton
+      )
     }
   }
 
@@ -261,15 +284,16 @@ export class PageBuilder {
       throw new Error('Must contain more at least 2 pages')
     }
 
-    if (this.options.startPage < 1 ||
-        this.options.startPage > this.pages.length
+    if ((this.options.startPage) &&
+        (this.options.startPage < 1 ||
+        this.options.startPage > this.pages.length)
     ) {
       throw new Error(
         `The start page must start between 1 & ${this.pages.length}`,
       )
     }
 
-    if (this.options.maxMatches > 100) {
+    if ((this.options.maxMatches) && this.options.maxMatches > 100) {
       throw new Error('Maximum amount of page chages exeeded')
     }
   }
@@ -295,17 +319,17 @@ export class PageBuilder {
 }
 
 export interface BuilderOptions {
-  showPagesNumbers: boolean
-  extendedButtons: boolean
-  deleteButton: string
-  firstButton: string
-  lastButton: string
-  backButton: string
-  forthButton: string
-  startPage: number
-  maxMatches: number
-  timeout: number
-  cycling: boolean
+  showPagesNumbers?: boolean
+  extendedButtons?: boolean
+  deleteButton?: string
+  firstButton?: string
+  lastButton?: string
+  backButton?: string
+  forthButton?: string
+  startPage?: number
+  maxMatches?: number
+  timeout?: number
+  cycling?: boolean
 }
 
 interface MessageContent {
