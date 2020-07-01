@@ -31,7 +31,7 @@ export class PageBuilder {
     this.currentPage = 1
     this.invoker = message
     this.actionButtons = []
-    this.options = options ?? {
+    this.options = Object.assign({}, {
       backButton: '⬅️',
       forthButton: '➡️',
       startPage: 1,
@@ -43,7 +43,7 @@ export class PageBuilder {
       deleteButton: '🗑️',
       showPagesNumbers: true,
       extendedButtons: false,
-    }
+    }, options ?? {})
   }
 
   public addPages (pages: Embed[]): PageBuilder {
@@ -55,6 +55,12 @@ export class PageBuilder {
 
   public addPage (page: Embed): PageBuilder {
     this.pages.push(page)
+
+    return this
+  }
+
+  public addActionButtons (actions: ActionButton[]): PageBuilder {
+    this.actionButtons.push(...actions)
 
     return this
   }
@@ -221,8 +227,7 @@ export class PageBuilder {
 
     this.handler = new ReactionHandler(
       this.message,
-      (userID: string) =>
-        userID === this.getInvoker(),
+      (user: string) => user === this.getInvoker(),
       false,
       {
         maxMatches: this.options
