@@ -4,5 +4,5 @@ import {
 
 export interface ActionButton {
   emote: string
-  run: (msg?: Message) => void | Promise<void>
+  run: (msg: Message) => void | Promise<void>
 }

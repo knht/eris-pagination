@@ -91,6 +91,15 @@ export class PageBuilder {
 
       if (emote === emoji) {
         await run(this.invoker)
+
+        if (this.message !== undefined) {
+          this.message.removeReaction(
+            emote,
+            this.getInvoker(),
+          ).catch((error: string) => {
+            throw new Error(`error removing reaction: ${error}`)
+          })
+        }
       }
     }
   }

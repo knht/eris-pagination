@@ -36,7 +36,7 @@ const msgEmbeds = [
 // Custom Action
 const embedAction = {
   emote: '🎬'
-  run: (msg) => msg.createMessage(`Hello, Action!`)
+  run: (msg) => msg.channel.createMessage(`Hello, Action!`)
 }
 
 // Message Handler
