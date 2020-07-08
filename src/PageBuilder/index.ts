@@ -61,13 +61,13 @@ export class PageBuilder {
     return this
   }
 
-  public addActionButtons (actions: ActionButton[]): PageBuilder {
+  public addActions (actions: ActionButton[]): PageBuilder {
     this.actionButtons.push(...actions)
 
     return this
   }
 
-  public addActionButton (action: ActionButton): PageBuilder {
+  public addAction (action: ActionButton): PageBuilder {
     this.actionButtons.push(action)
 
     return this
@@ -85,12 +85,12 @@ export class PageBuilder {
   private async handleActionButton (emoji: string): Promise<void> {
     for (let i = 0; i < this.actionButtons.length; i++) {
       const {
-        action,
-        actionEmote,
+        emote,
+        run,
       } = this.actionButtons[i]
 
-      if (actionEmote === emoji) {
-        await action()
+      if (emote === emoji) {
+        await run(this.invoker)
       }
     }
   }
@@ -255,7 +255,7 @@ export class PageBuilder {
     if (this.actionButtons.length !== 0) {
       for (let i = 0; i < this.actionButtons.length; i++) {
         await this.message?.addReaction(
-          this.actionButtons[i].actionEmote
+          this.actionButtons[i].emote
         )
       }
     }

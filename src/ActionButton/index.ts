@@ -1,15 +1,8 @@
+import {
+  Message,
+} from 'eris'
 
-export class ActionButton {
-
-  public readonly actionEmote: string
-  public readonly action: () => void | Promise<void>
-
-  constructor (
-    actionEmote: string,
-    action: () => void | Promise<void>,
-  ) {
-    this.actionEmote = actionEmote
-    this.action = action
-  }
-
+export interface ActionButton {
+  emote: string
+  run: (msg?: Message) => void | Promise<void>
 }
