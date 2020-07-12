@@ -1,8 +1,13 @@
 import {
+  Client,
   Message,
 } from 'eris'
 
 export interface ActionButton {
   emote: string
-  run: (msg: Message) => void | Promise<void>
+  run: (
+    msg: Message,
+    client: Client,
+    invoker: string,
+  ) => void | Promise<void>
 }

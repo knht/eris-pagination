@@ -90,7 +90,11 @@ export class PageBuilder {
       } = this.actionButtons[i]
 
       if (emote === emoji) {
-        await run(this.invoker)
+        await run(
+          this.invoker,
+          this.client,
+          this.getInvoker(),
+        )
 
         if (this.message !== undefined) {
           this.message.removeReaction(
@@ -227,64 +231,81 @@ export class PageBuilder {
   }
 
   public async construct (): Promise<void> {
-    this.validatePages()
+    if (this.message !== undefined) {
+      this.validatePages()
 
-    if (this.getInvoker() === this.getClientId()) {
-      this.message = await this.invoker.edit(this.generateContent())
-    } else {
-      this.message = await this.invoker.channel
-        .createMessage(this.generateContent())
-    }
+      if (this.getInvoker() === this.getClientId()) {
+        this.message = await this.invoker.edit(this.generateContent())
+      } else {
+        this.message = await this.invoker.channel
+          .createMessage(this.generateContent())
+      }
 
-    this.handler = new ReactionHandler(
-      this.message,
-      (user: string) => user === this.getInvoker(),
-      false,
-      {
-        maxMatches: this.options
-          ? this.options.maxMatches
+      this.handler = new ReactionHandler(
+        this.message,
+        (user: string) => user === this.getInvoker(),
+        false,
+        {
+          maxMatches: this.options
             ? this.options.maxMatches
-            : 50
-          : 50,
-      },
-    )
+              ? this.options.maxMatches
+              : 50
+            : 50,
+        },
+      )
 
-    await this.message?.addReaction(
+      this.addReactions(this.message)
+    }
+  }
+
+  private addReactions (message: Message): void {
+    message.addReaction(
       this.options.backButton
         ? this.options.backButton
-        : DEFAULT_BUILDER.backButton
-    )
+        : DEFAULT_BUILDER.backButton,
+    ).catch((error: string) => {
+      throw new Error(error)
+    })
 
-    await this.message?.addReaction(
+    message.addReaction(
       this.options.forthButton
         ? this.options.forthButton
-        : DEFAULT_BUILDER.forthButton
-    )
+        : DEFAULT_BUILDER.backButton,
+    ).catch((error: string) => {
+      throw new Error(error)
+    })
 
     if (this.actionButtons.length !== 0) {
-      for (let i = 0; i < this.actionButtons.length; i++) {
-        await this.message?.addReaction(
-          this.actionButtons[i].emote
-        )
+      for (const { emote } of this.actionButtons) {
+        message.addReaction(emote)
+          .catch((error: string) => {
+            throw new Error(error)
+          })
       }
     }
 
     if (this.options.extendedButtons) {
-      await this.message?.addReaction(
+      message.addReaction(
         this.options.lastButton
           ? this.options.lastButton
-          : DEFAULT_BUILDER.lastButton
-      )
-      await this.message?.addReaction(
+          : DEFAULT_BUILDER.lastButton,
+      ).catch((error: string) => {
+        throw new Error(error)
+      })
+      message.addReaction(
         this.options.firstButton
           ? this.options.firstButton
-          : DEFAULT_BUILDER.firstButton
-      )
-      await this.message?.addReaction(
+          : DEFAULT_BUILDER.firstButton,
+      ).catch((error: string) => {
+        throw new Error(error)
+      })
+      message.addReaction(
         this.options.deleteButton
           ? this.options.deleteButton
-          : DEFAULT_BUILDER.deleteButton
-      )
+          : DEFAULT_BUILDER.deleteButton,
+      ).catch((error: string) => {
+        throw new Error(error)
+      })
     }
   }
 
